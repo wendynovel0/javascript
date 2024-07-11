@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios en JavaScript</title>
+</head>
+<body>
+
+<h1>Ejercicios en JavaScript</h1>
+
+<button onclick="checkDrivingEligibility()">Ejercicio 1: Edad y Conducción</button>
+<br><br>
+<button onclick="getGrade()">Ejercicio 2: Calificación</button>
+<br><br>
+<button onclick="concatenateStrings()">Ejercicio 3: Concatenar Cadenas</button>
+<br><br>
+<button onclick="calculateDNILetter()">Ejercicio 4: Calcular Letra DNI</button>
+
+<script>
+    function checkDrivingEligibility() {
+        let age = prompt("Introduce tu edad:");
+        if (age !== null) {
+            age = parseInt(age);
+            if (age > 18 && age < 99) {
+                alert("Ya puedes conducir.");
+            } else {
+                alert("No puedes conducir.");
+            }
+        }
+    }
+
+    function getGrade() {
+        let nota = prompt("Introduce tu nota (0-10):");
+        if (nota !== null) {
+            nota = parseFloat(nota);
+            let calificacion;
+            if (nota >= 0 && nota < 3) {
+                calificacion = "Muy deficiente";
+            } else if (nota >= 3 && nota < 5) {
+                calificacion = "Insuficiente";
+            } else if (nota >= 5 && nota < 6) {
+                calificacion = "Suficiente";
+            } else if (nota >= 6 && nota < 7) {
+                calificacion = "Bien";
+            } else if (nota >= 7 && nota < 9) {
+                calificacion = "Notable";
+            } else if (nota >= 9 && nota <= 10) {
+                calificacion = "Sobresaliente";
+            } else {
+                calificacion = "Nota no válida";
+            }
+            alert("Calificación: " + calificacion);
+        }
+    }
+
+    function concatenateStrings() {
+        let result = '';
+        let input;
+        while ((input = prompt("Introduce una cadena de texto (cancelar para salir):")) !== null) {
+            if (result === '') {
+                result = input;
+            } else {
+                result += '-' + input;
+            }
+        }
+        alert("Cadenas concatenadas: " + result);
+    }
+
+    function calculateDNILetter() {
+        const letters = "TRWAGMYFPDXBNJZSQVHLCKE";
+        let dni;
+        while (true) {
+            dni = prompt("Introduce tu número de DNI (0-99999999):");
+            if (dni === null) {
+                break;
+            }
+            dni = parseInt(dni);
+            if (isNaN(dni) || dni < 0 || dni > 99999999) {
+                alert("Número de DNI no válido. Inténtalo de nuevo.");
+            } else {
+                const letter = letters[dni % 23];
+                alert("La letra de tu DNI es: " + letter);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
